@@ -40,3 +40,12 @@ class UserRegister(Resource):
         user.save_to_db()
 
         return {'message': "user created successfully"}, 201
+
+
+class User(Resource):
+
+    def get(self, name):
+        user = UserModel.find_by_username(name)
+        if user:
+            return user.to_json(), 200
+        return {'message':'User not registered'}, 404

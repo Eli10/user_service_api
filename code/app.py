@@ -3,7 +3,7 @@ from flask_restful import Api
 import os
 from db import db
 
-from resources.user import UserRegister
+from resources.user import UserRegister, User
 
 
 app = Flask(__name__)
@@ -12,7 +12,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:/
 api = Api(app)
 
 
-api.add_resource(UserRegister, '/user')
+api.add_resource(UserRegister, '/user/register')
+api.add_resource(User, '/user/<string:name>')
 
 
 @app.before_first_request
