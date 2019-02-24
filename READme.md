@@ -4,9 +4,13 @@ Currently just adds users to a db and can search for users based on username and
 
 ## Setup
 
-Have python and pip installed on machine
-- pip install -r requirements.txt
+Set up Python 3 Virtual environment 
+- pip install virtualenv
+- virutalenv venv --python=python3
 
+Install all Dependencies
+- pip install -r requirements.txt
+- cd code
 - In the code directory, run app.py
 
 
