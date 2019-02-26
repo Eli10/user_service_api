@@ -4,7 +4,7 @@ import os
 from db import db
 
 from resources.user import UserRegister, User
-from resources.restaurant import RestaurantList
+from resources.restaurant import RestaurantList, RestaurantSearch, Restaurant
 
 from insert_restaurants import insert_restaurants
 
@@ -17,6 +17,8 @@ api = Api(app)
 api.add_resource(UserRegister, '/user/register')
 api.add_resource(User, '/user/<string:name>')
 api.add_resource(RestaurantList, '/restaurants')
+api.add_resource(Restaurant, '/restaurant/<string:name>')
+api.add_resource(RestaurantSearch, '/restaurant/search/<string:name>')
 
 @app.before_first_request
 def create_tables():

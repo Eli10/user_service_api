@@ -40,7 +40,11 @@ class RestaurantModel(db.Model):
 
     @classmethod
     def find_by_name(cls, name):
-        return cls.query.filter_by(restaurant_name=name).first()
+        return cls.query.filter(cls.restaurant_name.contains(name)).first()
+
+    @classmethod
+    def find_by_search_name(cls, name):
+        return cls.query.filter(cls.restaurant_name.contains(name)).all()
 
     @classmethod
     def find_by_id(cls, u_id):

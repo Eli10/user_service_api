@@ -9,3 +9,23 @@ class RestaurantList(Resource):
         if restaurants:
             return {'restaurants': [ restaurant.to_json() for restaurant in restaurants ]}, 200
         return {'message':'User not registered'}, 404
+
+
+class Restaurant(Resource):
+
+    def get(self, name):
+        restaurant = RestaurantModel.find_by_name(name)
+
+        if restaurant:
+            return restaurant.to_json()
+        return {'message': 'Restaurant not registered'}, 404
+
+
+class RestaurantSearch(Resource):
+
+    def get(self, name):
+        restaurants = RestaurantModel.find_by_search_name(name)
+
+        if restaurants:
+            return {'restaurants': [restaurant.to_json() for restaurant in restaurants] }
+        return {'message': 'Restaurant not registered'}, 404
